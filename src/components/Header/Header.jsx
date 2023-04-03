@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CartButton from "./CartButton";
 
 const Container = styled.div`
     background-color: #8b1b0c;
@@ -13,7 +14,8 @@ const Nav = styled.div`
     width: 80%;
     margin: 0 auto;
     display: flex;
-    align-items: space-between;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const Logo = styled.span`
@@ -28,6 +30,7 @@ export default function Header() {
         <Container>
             <Nav>
                 <Logo>ReactMeals</Logo>
+                <CartButton />
             </Nav>
         </Container>
     );
