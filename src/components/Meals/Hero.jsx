@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Description from "./Description";
 
 const Img = styled.div`
     height: 50vh;
@@ -11,5 +12,10 @@ const Img = styled.div`
 `;
 
 export default function Hero() {
-    return <Img />;
+    return (
+        <>
+            <Img />
+            <Description />
+        </>
+    );
 }
