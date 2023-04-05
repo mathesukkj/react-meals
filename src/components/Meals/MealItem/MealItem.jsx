@@ -3,11 +3,13 @@ import styled from "styled-components";
 import MealItemForm from "./MealItemForm";
 
 const Container = styled.div`
-    width: 100%;
-    padding: 1.5rem;
+    width: 95%;
+    margin: 0 auto;
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #eaeaea;
 
     h1 {
         font-size: 1.4rem;

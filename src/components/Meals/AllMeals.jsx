@@ -8,11 +8,14 @@ const Container = styled.div`
     background-color: #fffdff;
     margin-top: 1.5rem;
     border-radius: 1.1rem;
+    padding: 1rem;
 `;
 
 export default function AllMeals() {
     return (
         <Container>
+            <MealItem />
+            <MealItem />
             <MealItem />
         </Container>
     );
