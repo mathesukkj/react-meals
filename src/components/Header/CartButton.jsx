@@ -22,9 +22,9 @@ const ItemsCount = styled.div`
     padding: 0.1rem 0.8rem;
 `;
 
-export default function CartButton() {
+export default function CartButton(props) {
     return (
-        <Container>
+        <Container onClick={props.onClick}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

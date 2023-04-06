@@ -44,7 +44,7 @@ const BtnOrder = styled.button`
     color: white;
 `;
 
-export default function Cart() {
+export default function Cart(props) {
     const cartItems = [];
 
     return (
@@ -55,7 +55,7 @@ export default function Cart() {
                 <span>35.62</span>
             </Total>
             <Actions>
-                <BtnClose>Close</BtnClose>
+                <BtnClose onClick={props.onShowCart}>Close</BtnClose>
                 <BtnOrder>Order</BtnOrder>
             </Actions>
         </CartModal>

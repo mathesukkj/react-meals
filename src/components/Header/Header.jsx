@@ -25,12 +25,12 @@ const Logo = styled.span`
     font-weight: 700;
 `;
 
-export default function Header() {
+export default function Header(props) {
     return (
         <Container>
             <Nav>
                 <Logo>ReactMeals</Logo>
-                <CartButton />
+                <CartButton onClick={props.onShowCart} />
             </Nav>
         </Container>
     );
