@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import CartModal from "./CartModal";
+import CartContext from "../../context/cart-context";
+import CartItem from "./CartItem";
 
 const Total = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
 `;
 
@@ -45,13 +47,15 @@ const BtnOrder = styled.button`
 `;
 
 export default function Cart(props) {
-    const cartItems = [];
+    const cartItems = useContext(CartContext);
 
     return (
         <CartModal>
-            Cart
+            {cartItems.items.map((item) => (
+                <CartItem key={item.name} name={item.name} price={item.price} />
+            ))}
             <Total>
-                Total amount
+                Total amount:
                 <span>35.62</span>
             </Total>
             <Actions>

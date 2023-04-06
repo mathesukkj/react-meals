@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import AllMeals from "./components/Meals/AllMeals";
 import Hero from "./components/Meals/Hero";
 import { useState } from "react";
+import { CartProvider } from "./context/cart-context";
 
 function App() {
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -13,12 +14,12 @@ function App() {
     };
 
     return (
-        <>
+        <CartProvider>
             {isCartOpen && <Cart onShowCart={handleShowCart} />}
             <Header onShowCart={handleShowCart} />
             <Hero />
             <AllMeals />
-        </>
+        </CartProvider>
     );
 }
 
