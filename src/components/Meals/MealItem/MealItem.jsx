@@ -35,13 +35,13 @@ const Price = styled.span`
     font-size: 1.3rem;
 `;
 
-export default function MealItem() {
+export default function MealItem({ name, description, price }) {
     return (
         <Container>
             <div>
-                <h1>Sushi</h1>
-                <Description>Finest fish and veggies</Description>
-                <Price>R$22.99</Price>
+                <h1>{name}</h1>
+                <Description>{description}</Description>
+                <Price>R${price}</Price>
             </div>
             <MealItemForm />
         </Container>
