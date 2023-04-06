@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -41,11 +41,22 @@ const Button = styled.button`
 `;
 
 export default function MealItemForm() {
+    const [amount, setAmount] = useState(1);
+
+    function handleChange(e) {
+        setAmount(e.target.value);
+    }
+
     return (
         <Container>
             <InputGroup>
                 <label>Amount:</label>
-                <input type="number" name="amount" />
+                <input
+                    type="number"
+                    value={amount}
+                    name="amount"
+                    onChange={handleChange}
+                />
             </InputGroup>
             <ButtonContainer>
                 <Button>+ Add</Button>
