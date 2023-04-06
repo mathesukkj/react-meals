@@ -37,6 +37,7 @@ const Button = styled.button`
     width: 50%;
     border-radius: 1rem;
     color: white;
+    cursor: pointer;
 `;
 
 export default function MealItemForm() {
