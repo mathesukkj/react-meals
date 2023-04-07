@@ -41,7 +41,7 @@ const Button = styled.button`
 `;
 
 export default function MealItemForm({ onAdd, amount, setAmount }) {
-    const [itemAmount, setItemAmount] = useState(1);
+    const [itemAmount, setItemAmount] = useState(0);
 
     function handleChange(e) {
         setItemAmount(e.target.value);
@@ -49,7 +49,6 @@ export default function MealItemForm({ onAdd, amount, setAmount }) {
 
     function onClick() {
         setAmount((prev) => prev + parseInt(itemAmount));
-        onAdd();
     }
 
     return (

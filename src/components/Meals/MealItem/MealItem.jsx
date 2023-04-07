@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import MealItemForm from "./MealItemForm";
 import CartContext from "../../../context/cart-context";
@@ -38,9 +38,9 @@ const Price = styled.span`
 
 export default function MealItem({ name, description, price }) {
     const context = useContext(CartContext);
-    const [amount, setAmount] = useState(1);
+    const [amount, setAmount] = useState(0);
 
-    function handleAddMeal() {
+    useEffect(() => {
         const meal = {
             name,
             description,
@@ -49,7 +49,7 @@ export default function MealItem({ name, description, price }) {
             key: name,
         };
         context.addItem(meal);
-    }
+    }, [amount]);
 
     return (
         <Container>
@@ -58,11 +58,7 @@ export default function MealItem({ name, description, price }) {
                 <Description>{description}</Description>
                 <Price>R${price}</Price>
             </div>
-            <MealItemForm
-                amount={amount}
-                setAmount={setAmount}
-                onAdd={handleAddMeal}
-            />
+            <MealItemForm amount={amount} setAmount={setAmount} />
         </Container>
     );
 }
