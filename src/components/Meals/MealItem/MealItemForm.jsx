@@ -60,6 +60,7 @@ export default function MealItemForm({ onAdd, amount, setAmount }) {
                     value={itemAmount}
                     name="amount"
                     onChange={handleChange}
+                    min={0}
                 />
             </InputGroup>
             <ButtonContainer>
