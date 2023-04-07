@@ -27,10 +27,9 @@ const cartReducer = (state, { type, item }) => {
                 };
                 const updatedItems = [...state.items];
                 updatedItems[itemIndex] = updatedItem;
-
                 return {
                     items: updatedItems,
-                    totalAmount: state.totalAmount + item.price * item.amount,
+                    totalAmount: state.totalAmount + item.price,
                 };
             }
             return {

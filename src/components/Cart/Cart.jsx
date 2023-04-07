@@ -61,7 +61,7 @@ export default function Cart(props) {
             ))}
             <Total>
                 Total amount:
-                <span>35.62</span>
+                <span>{cartItems.totalAmount.toFixed(2)}</span>
             </Total>
             <Actions>
                 <BtnClose onClick={props.onShowCart}>Close</BtnClose>
