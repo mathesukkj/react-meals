@@ -69,14 +69,14 @@ const Flex = styled.div`
     align-items: center;
 `;
 
-export default function CartItem({ name, price }) {
+export default function CartItem({ name, price, amount }) {
     return (
         <Container>
             <div>
                 <Title>{name}</Title>
                 <Flex>
                     <Price>{price}</Price>
-                    <Amount>x2</Amount>
+                    <Amount>{amount}</Amount>
                 </Flex>
             </div>
             <Actions>

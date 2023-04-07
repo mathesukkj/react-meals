@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
 
 const CartContext = createContext({
     items: [],
@@ -7,34 +7,56 @@ const CartContext = createContext({
     removeItem: (id) => {},
 });
 
+const defaultState = {
+    items: [],
+    totalAmount: 0,
+};
+
+const cartReducer = (state, { type, item }) => {
+    switch (type) {
+        case "ADD":
+            const itemIndex = state.items.findIndex(
+                (cartItem) => cartItem.key === item.key
+            );
+
+            if (itemIndex !== -1) {
+                const existingItem = state.items[itemIndex];
+                const updatedItem = {
+                    ...existingItem,
+                    amount: item.amount,
+                };
+                const updatedItems = [...state.items];
+                updatedItems[itemIndex] = updatedItem;
+
+                return {
+                    items: updatedItems,
+                    totalAmount: state.totalAmount + item.price * item.amount,
+                };
+            }
+            return {
+                items: state.items.concat(item),
+                totalAmount: state.totalAmount + item.price * item.amount,
+            };
+        case "REMOVE":
+    }
+
+    return defaultState;
+};
+
 export function CartProvider(props) {
-    const addItem = (item) => {};
-    const removeItem = (id) => {};
+    const [cartState, dispatchCart] = useReducer(cartReducer, defaultState);
+
+    const addItem = (item) => {
+        dispatchCart({ type: "ADD", item });
+    };
+
+    const removeItem = (id) => {
+        dispatchCart({ type: "REMOVE" });
+    };
 
     const context = {
-        items: [
-            {
-                name: "Sushi",
-                description: "Finest fish and veggies",
-                price: 22.99,
-            },
-            {
-                name: "Schnitzel",
-                description: "A german specialty!",
-                price: 16.5,
-            },
-            {
-                name: "Barbecue Burger",
-                description: "American, raw, meaty",
-                price: 12.99,
-            },
-            {
-                name: "Green Bowl",
-                description: "Healthy...and green...",
-                price: 18.99,
-            },
-        ],
-        totalAmount: 0,
+        items: cartState.items,
+        totalAmount: cartState.totalAmount,
         addItem,
         removeItem,
     };

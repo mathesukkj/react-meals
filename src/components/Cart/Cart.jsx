@@ -52,7 +52,12 @@ export default function Cart(props) {
     return (
         <CartModal>
             {cartItems.items.map((item) => (
-                <CartItem key={item.name} name={item.name} price={item.price} />
+                <CartItem
+                    key={item.name}
+                    name={item.name}
+                    amount={item.amount}
+                    price={item.price}
+                />
             ))}
             <Total>
                 Total amount:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -40,11 +40,16 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-export default function MealItemForm() {
-    const [amount, setAmount] = useState(1);
+export default function MealItemForm({ onAdd, amount, setAmount }) {
+    const [itemAmount, setItemAmount] = useState(1);
 
     function handleChange(e) {
-        setAmount(e.target.value);
+        setItemAmount(e.target.value);
+    }
+
+    function onClick() {
+        setAmount((prev) => prev + parseInt(itemAmount));
+        onAdd();
     }
 
     return (
@@ -53,13 +58,13 @@ export default function MealItemForm() {
                 <label>Amount:</label>
                 <input
                     type="number"
-                    value={amount}
+                    value={itemAmount}
                     name="amount"
                     onChange={handleChange}
                 />
             </InputGroup>
             <ButtonContainer>
-                <Button>+ Add</Button>
+                <Button onClick={onClick}>+ Add</Button>
             </ButtonContainer>
         </Container>
     );
