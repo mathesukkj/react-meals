@@ -41,6 +41,9 @@ export default function MealItem({ name, description, price }) {
     const [amount, setAmount] = useState(0);
 
     useEffect(() => {
+        if (amount === 0) {
+            return;
+        }
         const meal = {
             name,
             description,
